@@ -10,36 +10,37 @@ The project makes use of:
 It is necessary to have any kind of SFML 2.6.x for the correct execution of these executables.
 
 The SFML package used was retrieved with macOS system by: 
-`brew install sfml@2`
+`brew install sfml@2`  
 The CMakeLists.txt looks instead for any kind of SFML 2.x packages; it is advised to use the same version as the one said to be used in the files (2.6.x) to not encounter any compiling issue. 
 
 It is discouraged for macOS users to run:
-`brew update sfml` 
+`brew update sfml`   
 as this may lead to the rewriting of the package as SFML 3.x, which has a completely new redefined set of functions. 
 To further prevent this it is suggested to lock sfml@2 out of updates via:
-`brew pin sfml@2` 
+`brew pin sfml@2`  
 It is advised, if SFML 3.x was already present to lock away the SFML 3.x package if installed via brew through the sequence of commands: 
-<pre> ``` brew unlink sfml brew link sfml@2 ``` </pre>
+`brew unlink sfml`  
+`brew link sfml@2`  
 this will lead sfml@2 (SFML 2.6.x) to be called over sfml (SFML 3.x).
 
 ## Builds
 
 To build the actual executable and the corresponding tests we recommend creating two folders for the debug mode and release mode respectively.
 - for **Debug Mode**: 
-`cmake -S . -B build/debug -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON`
-`cmake --build build/debug`
+`cmake -S . -B build/debug -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON`  
+`cmake --build build/debug`  
 - for **Release Mode**:
-`cmake -S . -B build/release -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON`
-`cmake --build build/release`
+`cmake -S . -B build/release -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON`  
+`cmake --build build/release`  
 The release mode will generate a warning given by an unused variable that was kept for a nearby assert test. 
 
 To run the executables within the chosen mode one can either use the command:
 `./build/debug/BoidSimulation`   
 or: 
-`./build/release/BoidSimulation`
+`./build/release/BoidSimulation`  
 
 One is free to set
-`-DBUILD_TESTING=False`
+`-DBUILD_TESTING=False`  
 in case he prefers not to build the tests.
 
 ## Tests Running
@@ -47,11 +48,11 @@ in case he prefers not to build the tests.
 In the project a file called *test_boid.cpp* is present. That file contains all the DOCTESTs of the functions defined throughout the project.
 To run these tests from the root directory use one of these commands: 
 - to have the tests executables in the debug mode folder: 
-`ctest --test-dir build/debug --output-on-failure`
-`./build/debug/test_boid`
+`ctest --test-dir build/debug --output-on-failure`  
+`./build/debug/test_boid`  
 - to have the tests executables in the release mode folder: 
-`ctest --test-dir build/release --output-on-failure`
-`./build/release/test_boid`
+`ctest --test-dir build/release --output-on-failure`  
+`./build/release/test_boid`  
 the "*ctest*" runs the tests as a single big "test" and shows if the test was passed per se. The "*test_boid*" executable uses all the tests singularly and outputs the number of done and passed tests. 
 
 ## UI Guide and Other Functionalities
