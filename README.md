@@ -19,8 +19,7 @@ as this may lead to the rewriting of the package as SFML 3.x, which has a comple
 To further prevent this it is suggested to lock sfml@2 out of updates via:
 `brew pin sfml@2` 
 It is advised, if SFML 3.x was already present to lock away the SFML 3.x package if installed via brew through the sequence of commands: 
-`brew unlink sfml`
-`brew link sfml@2`
+<pre> ``` brew unlink sfml brew link sfml@2 ``` </pre>
 this will lead sfml@2 (SFML 2.6.x) to be called over sfml (SFML 3.x).
 
 ## Builds
