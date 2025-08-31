@@ -35,9 +35,9 @@ First of all one must compile through:
 The release mode will generate a warning given by an unused variable that was kept for a nearby assert test. 
 
 To run the executables within the chosen mode one can either use the command:  
-`./build/debug/BoidSimulation`   
+`./build/Debug/BoidSimulation`   
 or:  
-`./build/release/BoidSimulation`  
+`./build/Release/BoidSimulation`  
 
 One is free to set   
 `cmake -S . -B build -G "Ninja Multi-Config" -DBUILD_TESTING=OFF`  
