@@ -80,9 +80,9 @@ class Menu {
  private:
   void generateLayout();
 
-  sf::RenderWindow& window;
-  sf::Font& font;
-  MenuType type;
+  sf::RenderWindow& _window;
+  sf::Font& _font;
+  MenuType _type;
 
   //---- menu UI elements ----
   std::vector<Slider> sliders;

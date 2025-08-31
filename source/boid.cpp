@@ -51,7 +51,7 @@ void Boid::SetRadii(float baseSize, float factor1, float factor2,
 }
 void Boid::SetSize(float rad) {
   for (std::size_t i = 0; i < sides; ++i) {
-    float angle = i * 2 * 3.14159f / sides - 3.14159f / 2.0f;
+    float angle = static_cast<float>(i * 2 * 3.14159f / sides - 3.14159f / 2.0f);
     float x = rad * std::cos(angle);
     float y = rad * std::sin(angle);
     b_bird.setPoint(i, sf::Vector2f(x, y));
@@ -134,7 +134,8 @@ float operator*(sf::Vector2f vel1, sf::Vector2f vel2) {
 float Norm(const sf::Vector2f& vec) {
   // vector norm
   assert(!std::isnan(vec.x) && !std::isnan(vec.y));
-  return sqrt(vec * vec);
+  float product = static_cast<float>(vec*vec); 
+  return sqrt(product);
 }
 float DistSqr(const sf::Vector2f& vec1, const sf::Vector2f& vec2) {
   // vector difference squared

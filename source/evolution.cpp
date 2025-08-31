@@ -1,4 +1,5 @@
 #include "evolution.hpp"
+#include <cassert>
 
 void Evolution(Boid &boid, const std::vector<Boid *> &neighbors,
                std::vector<Obstacle *> &obstacles, float &maxX, float &maxY,

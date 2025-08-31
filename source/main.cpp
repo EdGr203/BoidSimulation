@@ -10,9 +10,9 @@ int main() {
   window.setFramerateLimit(120);
   sf::Vector2u windowlimits = window.getSize();
   float minX = 0.0f;
-  float maxX = windowlimits.x;
+  float maxX = static_cast<float>(windowlimits.x);
   float minY = 0.0f;
-  float maxY = windowlimits.y;
+  float maxY = static_cast<float>(windowlimits.y);
 
   // --- various menus creation ---
   sf::Font font;

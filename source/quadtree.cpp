@@ -1,4 +1,5 @@
 #include "quadtree.hpp"
+#include <cassert> 
 
 Quadtree::Quadtree(float x, float y, float width, float height, int cap)
     : boundary(x, y, width, height), capacity(cap) {

@@ -222,28 +222,28 @@ void Notification::draw(sf::RenderWindow& window) {
 //-------MENU---------
 
 Menu::Menu(sf::RenderWindow& window, sf::Font& font, MenuType type)
-    : window(window), font(font), type(type) {
+    : _window(window), _font(font), _type(type) {
   generateLayout();  // it generates the specific layout
 }
 
 void Menu::handleEvent(const sf::Event& event) {
-  for (auto& slider : sliders) slider.handleEvent(event, window);
+  for (auto& slider : sliders) slider.handleEvent(event, _window);
 
-  for (auto& checkbox : checkboxes) checkbox.handleEvent(event, window);
+  for (auto& checkbox : checkboxes) checkbox.handleEvent(event, _window);
 
   for (auto& button : buttons) {
-    button.handleEvent(event, window);
+    button.handleEvent(event, _window);
   }
 }
 
 void Menu::draw() {
-  window.clear(sf::Color(30, 30, 30));  // grayish background color
+  _window.clear(sf::Color(30, 30, 30));  // grayish background color
 
-  for (const auto& slider : sliders) slider.draw(window);
+  for (const auto& slider : sliders) slider.draw(_window);
 
-  for (const auto& checkbox : checkboxes) checkbox.draw(window);
+  for (const auto& checkbox : checkboxes) checkbox.draw(_window);
 
-  for (const auto& button : buttons) button.draw(window);
+  for (const auto& button : buttons) button.draw(_window);
 }
 
 void Menu::generateLayout() {
@@ -251,31 +251,31 @@ void Menu::generateLayout() {
   checkboxes.clear();
   buttons.clear();
 
-  if (type == MenuType::Main) {
-    sliders.emplace_back("Spawned Boids", 20, 300, 160, font,
+  if (_type == MenuType::Main) {
+    sliders.emplace_back("Spawned Boids", 20, 300, 160, _font,
                          sf::Vector2f(250, 100));
-    buttons.emplace_back("Start", font, sf::Vector2f(325, 400),
+    buttons.emplace_back("Start", _font, sf::Vector2f(325, 400),
                          sf::Vector2f(150, 40), sf::Color::Yellow);
-    buttons.emplace_back("Boids Radii", font, sf::Vector2f(175, 250),
+    buttons.emplace_back("Boids Radii", _font, sf::Vector2f(175, 250),
                          sf::Vector2f(150, 40));
-    buttons.emplace_back("Modes", font, sf::Vector2f(475, 250),
+    buttons.emplace_back("Modes", _font, sf::Vector2f(475, 250),
                          sf::Vector2f(150, 40));
-  } else if (type == MenuType::Radii) {
-    sliders.emplace_back("Boid Size", 0.1f, 1.9f, 1.f, font,
+  } else if (_type == MenuType::Radii) {
+    sliders.emplace_back("Boid Size", 0.1f, 1.9f, 1.f, _font,
                          sf::Vector2f(250, 100));
-    sliders.emplace_back("Separation Radius", 0.6f, 1.4f, 1.f, font,
+    sliders.emplace_back("Separation Radius", 0.6f, 1.4f, 1.f, _font,
                          sf::Vector2f(250, 150));
-    sliders.emplace_back("Cohesion Radius", 0.6f, 1.4f, 1.f, font,
+    sliders.emplace_back("Cohesion Radius", 0.6f, 1.4f, 1.f, _font,
                          sf::Vector2f(250, 200));
-    sliders.emplace_back("Alignment Radius", 0.6f, 1.4f, 1.f, font,
+    sliders.emplace_back("Alignment Radius", 0.6f, 1.4f, 1.f, _font,
                          sf::Vector2f(250, 250));
-    buttons.emplace_back("Back", font, sf::Vector2f(325, 350),
+    buttons.emplace_back("Back", _font, sf::Vector2f(325, 350),
                          sf::Vector2f(150, 40));
-  } else if (type == MenuType::Modalities) {
-    checkboxes.emplace_back("Gradual Damage", font, sf::Vector2f(325, 100));
-    checkboxes.emplace_back("Complete Evasion", font, sf::Vector2f(325, 150));
-    checkboxes.emplace_back("Arrow Following", font, sf::Vector2f(325, 200));
-    buttons.emplace_back("Back", font, sf::Vector2f(325, 300),
+  } else if (_type == MenuType::Modalities) {
+    checkboxes.emplace_back("Gradual Damage", _font, sf::Vector2f(325, 100));
+    checkboxes.emplace_back("Complete Evasion", _font, sf::Vector2f(325, 150));
+    checkboxes.emplace_back("Arrow Following", _font, sf::Vector2f(325, 200));
+    buttons.emplace_back("Back", _font, sf::Vector2f(325, 300),
                          sf::Vector2f(150, 40));
   }
 }
